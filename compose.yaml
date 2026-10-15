@@ -1,0 +1,34 @@
+name: api-imobiliaria-faculdade-als-13316
+
+services:
+  db:
+    image: mariadb:11.4
+    container_name: api-imobiliaria-faculdade-als-13316-db
+    cpus: 1.0
+    mem_limit: 512m
+    environment:
+      MARIADB_DATABASE: ${DB_NAME:?Defina DB_NAME no .env}
+      MARIADB_USER: ${DB_USER:?Defina DB_USER no .env}
+      MARIADB_PASSWORD: ${DB_PASSWORD:?Defina DB_PASSWORD no .env}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Defina DB_ROOT_PASSWORD no .env}
+    ports:
+      - "127.0.0.1:${DB_PORT:-13316}:3306"
+    volumes:
+      - dados:/var/lib/mysql
+    networks:
+      - banco
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+volumes:
+  dados:
+    name: api-imobiliaria-faculdade-als-13316-dados
+
+networks:
+  banco:
+    name: api-imobiliaria-faculdade-als-13316-rede
+    internal: true

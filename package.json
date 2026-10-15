@@ -1,0 +1,30 @@
+{
+  "name": "api-imobiliaria",
+  "version": "1.0.0",
+  "description": "API REST CRUD de imóveis com Express e MySQL/MariaDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:init": "node scripts/init-db.js",
+    "db:portable:install": "powershell -NoProfile -File scripts/install-portable.ps1",
+    "db:portable:init": "node scripts/portable-db.js init",
+    "db:portable:start": "node scripts/portable-db.js start",
+    "db:portable:provision": "node scripts/portable-db.js provision",
+    "db:portable:status": "node scripts/portable-db.js status",
+    "db:portable:stop": "node scripts/portable-db.js stop",
+    "test": "node --test test/api.test.js",
+    "test:validation": "node --test test/validation.test.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.12.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

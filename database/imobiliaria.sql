@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS imobiliaria
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE imobiliaria;
+
+CREATE TABLE IF NOT EXISTS imovel (
+  id INT NOT NULL AUTO_INCREMENT,
+  descricao VARCHAR(255) NOT NULL,
+  bairro VARCHAR(100) NOT NULL,
+  valor DECIMAL(12,2) NOT NULL,
+  PRIMARY KEY (id)
+);
